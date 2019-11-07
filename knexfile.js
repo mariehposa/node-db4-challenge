@@ -3,7 +3,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './data/recipeBook.db3'
+      filename: './data/recipe-book.db3'
     },
     migrations: {
       directory: './data/migrations'
@@ -13,7 +13,7 @@ module.exports = {
     },
     pool: {
       afterCreate: (connections, done) => {
-        connections.run('PRAGMA foreign keys = ON', done);
+        connections.run('PRAGMA foreign_keys = ON', done);
       }
     }
   },
