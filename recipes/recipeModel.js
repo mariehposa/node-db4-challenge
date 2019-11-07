@@ -13,7 +13,8 @@ function getShoppingList(recipe_id) {
 
 function getInstructions(recipe_id) {
     return db('steps as s')
-    .select('s.step_number', 's.Instruction')
+    .join('recipes as r', 'r.id', 's.recipe_id')
+    .select('r.recipe_name', 's.step_number', 's.Instruction')
     .where('s.recipe_id', recipe_id)
 }
 
