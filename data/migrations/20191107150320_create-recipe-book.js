@@ -3,11 +3,11 @@
 exports.up = function (knex) {
     return knex.schema
         .createTable('recipes', table => {
-            table.increments('r_id')
+            table.increments('id')
             table.string('recipe_name', 128)
         })
         .createTable('ingredients', table => {
-            table.increments('i_id')
+            table.increments('id')
             table.string('Ingredient_name', 128)
         })
         .createTable('quantity', table => {
@@ -15,12 +15,12 @@ exports.up = function (knex) {
             table.integer('recipe_id')
                 .unsigned()
                 .notNullable()
-                .references('r_id')
+                .references('id')
                 .inTable('recipes')
             table.integer('ingredient_id')
                 .unsigned()
                 .notNullable()
-                .references('i_id')
+                .references('id')
                 .inTable('ingredients')
             table.decimal('quantity')
                 .unsigned()
@@ -31,7 +31,7 @@ exports.up = function (knex) {
             table.integer('recipe_id')
                 .unsigned()
                 .notNullable()
-                .references('r_id')
+                .references('id')
                 .inTable('recipes')
             table.integer('step_number')
                 .unsigned()
