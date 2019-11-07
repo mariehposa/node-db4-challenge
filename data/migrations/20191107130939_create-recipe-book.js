@@ -20,7 +20,22 @@ exports.up = function(knex) {
             .unsigned()
             .notNullable()
             .references('id')
-            .table('ingerdients')
+            .table('ingredients')
+        table.float('quantity')
+        .unsigned()
+        .notNullable()
+    })
+    .createTable('steps', table => {
+        table.increments()
+        table.integer('recipe_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .table('recipes')
+        table.integer('step_number')
+            .unsigned()
+            .notNullable()
+        table.string('Instruction')
     })
 };
 
